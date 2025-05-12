@@ -145,4 +145,43 @@
         color: var(--accent-color);
         }
         
-        
+      /* Modal Custom Styling */
+.custom-modal {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 12px;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-modal-header {
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--accent-color);
+  color: var(--text-color);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.custom-modal-body {
+  padding: 1.5rem;
+  background-color: var(--secondary-color);
+}
+
+.custom-modal-footer {
+  background-color: var(--primary-color);
+  border-top: 1px solid var(--accent-color);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.custom-close-btn {
+  border-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.custom-close-btn:hover {
+  background-color: var(--hover-color);
+  color: white;
+}
+  
