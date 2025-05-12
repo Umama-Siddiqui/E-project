@@ -1,0 +1,40 @@
+:root {
+    --primary-color: #0F0F0F;
+    --secondary-color: #1F1F1F;
+    --accent-color: #EF4444;
+    --hover-color: #DC2626;
+    --text-color: #F5F5F5;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+    }
+    
+    .navbar, .dropdown-menu {
+    background-color: var(--primary-color);
+    }
+    
+    .dropdown-item:hover {
+    background-color: var(--hover-color);
+    }
+    
+    .modal-content {
+    background-color: var(--secondary-color);
+    }
+
+
+    footer {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        }
+        
+        footer a {
+        color: var(--text-color);
+        transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+        color: var(--accent-color);
+        }
+        
+        hr {
+        border-top: 1px solid var(--secondary-color);
+        }
