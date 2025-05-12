@@ -22,11 +22,13 @@
   <!-- Custom CSS -->
   <link href="../css/admin.css" rel="stylesheet">
   <link href="../css/navbar.css" rel="stylesheet">
+  
 
 </head>
 <body>
 
   <!-- Include Navbar -->
+  <?php include '../phpwork/nav.php'; ?>
   <?php include '../phpwork/sidebar.php'; ?>
   <?php include '../phpwork/fetch.php'; ?>
   <div class="main-content p-4">
@@ -132,6 +134,9 @@
 
     </section>
   </div>
+  <?php include '../phpwork/footer.php'; ?>
+  
+ 
 
 
 

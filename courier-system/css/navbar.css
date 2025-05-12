@@ -6,11 +6,7 @@
       --text-color: #F5F5F5;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+   
 
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -119,3 +115,34 @@
         margin-left: 240px;
       }
     }
+
+
+
+    .navbar, .dropdown-menu {
+    background-color: var(--primary-color);
+    }
+    
+    .dropdown-item:hover {
+    background-color: var(--hover-color);
+    }
+    
+    .modal-contents {
+    background-color: var(--secondary-color);
+    }
+
+
+    footer {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        }
+        
+        footer a {
+        color: var(--text-color);
+        transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+        color: var(--accent-color);
+        }
+        
+        

@@ -1,16 +1,5 @@
-<!-- Required Bootstrap & Font Awesome CDN -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- <!-- Bootstrap CSS -->
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap js Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="nav.css"> 
 
-
-
-<footer class="bg-dark text-white pt-4">
+<footer class="text-white pt-4">
   <div class="container">
     <!-- Top row -->
     <div class="row align-items-center text-center text-md-start">
@@ -21,10 +10,8 @@
       </div>
 
       <!-- Center: Navigation Links -->
-      <div class="col-md-4 mb-3 mb-md-0 d-flex justify-content-center gap-3">
-        <a href="#" class="text-white text-decoration-none">Home</a>
-        <a href="#" class="text-white text-decoration-none">About</a>
-        <a href="#" class="text-white text-decoration-none">Contact</a>
+      <div class="col-md-4 mb-3 mb-md-0 d-flex justify-content-center gap-1">
+        &copy; 2025 . All rights reserved.
       </div>
 
       <!-- Right: Social Media Icons -->
@@ -41,10 +28,10 @@
     <!-- Bottom row -->
     <div class="row text-center text-md-between small">
       <div class="col-md-6 mb-2 mb-md-0">
-        &copy; 2025 . All rights reserved.
+        <!-- &copy; 2025 . All rights reserved. -->
       </div>
       <div class="col-md-6">
-        <span class="text-muted">Designed with ❤️ using Bootstrap</span>
+        <span class="text-muted"></span>
       </div>
     </div>
   </div>

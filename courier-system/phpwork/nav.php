@@ -1,16 +1,8 @@
-<!-- Required Bootstrap & Font Awesome CDN -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- <!-- Bootstrap CSS -->
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap js Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="nav.css">    
+
 
    
   <!-- Topbar -->
-   <nav class="navbar navbar-expand bg-dark text-white px-4 justify-content-end">
+   <nav class="navbar navbar-expand text-white px-4 justify-content-end" style="margin-top: -20;">
   <div class="dropdown">
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="fas fa-user-circle fs-4"></i>
@@ -25,7 +17,7 @@
 <!-- Profile Modal -->
 <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-secondary text-white">
+    <div class="modal-contents bg-secondary text-white">
       <div class="modal-header border-0">
         <h5 class="modal-title" id="profileModalLabel">Admin Profile</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>

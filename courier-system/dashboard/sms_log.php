@@ -25,6 +25,8 @@
 <body>
 
   <!-- Include Navbar -->
+  <?php include '../phpwork/nav.php'; ?>
+
   <?php include '../phpwork/sidebar.php'; ?>
   <?php include '../phpwork/fetch.php'; ?>
   <div class="main-content p-4">
@@ -146,6 +148,7 @@
 
     
   </div>
+  <?php include '../phpwork/footer.php'; ?>
 
 
 
