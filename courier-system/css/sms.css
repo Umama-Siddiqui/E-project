@@ -1,0 +1,69 @@
+:root {
+    --primary-color: #0F0F0F;
+    --secondary-color: #1F1F1F;
+    --accent-color: #EF4444;
+    --hover-color: #DC2626;
+    --text-color: #F5F5F5;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+}
+
+
+
+/* Add in your custom CSS file */
+.sms-logs-header {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px var(--accent-color);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+
+.sms-filter-section {
+  background-color: var(--secondary-color);
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.sms-filter-section .form-label {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.sms-filter-section .form-control,
+.sms-filter-section .form-select {
+  transition: 0.3s ease;
+}
+
+.sms-filter-section .form-control:focus,
+.sms-filter-section .form-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25);
+}
+
+
+
+
+.sms-log-table .badge {
+  font-size: 0.85rem;
+  padding: 0.4em 0.6em;
+}
+
+.sms-log-table .table td,
+.sms-log-table .table th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.sms-log-table .table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}

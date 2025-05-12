@@ -1,0 +1,175 @@
+  :root {
+      --primary-color: #0F0F0F;
+      --secondary-color: #1F1F1F;
+      --accent-color: #EF4444;
+      --hover-color: #DC2626;
+      --text-color: #F5F5F5;
+      --success-color: #10B981;
+      --warning-color: #F59E0B;
+    }
+
+.tracking-card {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+}
+
+.tracking-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+}
+
+.tracking-input {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  font-weight: bold;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tracking-input:focus {
+  outline: none;
+  border-color: var(--hover-color);
+  box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25);
+}
+
+
+
+
+.sender-info-card {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sender-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+}
+
+.sender-input {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sender-input:focus {
+  outline: none;
+  border-color: var(--hover-color);
+  box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25);
+}
+
+
+
+
+
+.receiver-info-card {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.receiver-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+}
+
+.receiver-input {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.receiver-input:focus {
+  outline: none;
+  border-color: var(--hover-color);
+  box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25);
+}
+
+
+
+.page-title-box {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  animation: fadeSlideIn 0.6s ease-in-out;
+}
+
+.add-courier-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* Animation */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.parcel-details-card {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parcel-details-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+}
+
+.parcel-input {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parcel-input:focus {
+  outline: none;
+  border-color: var(--hover-color);
+  box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25);
+}
+
+
+
+
+.unique-submit-btn {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.unique-submit-btn:hover {
+  background-color: var(--hover-color);
+  color: white;
+}
+
+
+
+.custom-alert {
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}

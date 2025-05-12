@@ -1,0 +1,151 @@
+:root {
+    --primary-color: #0F0F0F;
+    --secondary-color: #1F1F1F;
+    --accent-color: #EF4444;
+    --hover-color: #DC2626;
+    --text-color: #F5F5F5;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+  }
+
+
+
+.manage-couriers-title-box {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.1);
+    animation: fadeInUp 0.6s ease-in-out;
+  }
+  
+  .manage-couriers-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+  }
+  
+  /* Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+  .search-filter-box {
+    background-color: var(--secondary-color);
+    animation: fadeIn 0.5s ease-in-out;
+    border: 1px solid var(--primary-color);
+  }
+  
+  .filter-input {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 0.5rem;
+  }
+  
+  .filter-input::placeholder {
+    color: #aaa;
+  }
+  
+  .filter-input:focus {
+    border-color: var(--hover-color);
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+    outline: none;
+  }
+  
+  .btn-accent {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-accent:hover {
+    background-color: var(--hover-color);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+ 
+/* Modal Custom Styling */
+.modal-content {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
+    animation: fadeInUp 0.3s ease-in-out;
+  }
+  
+  .modal-header {
+    border-bottom: 1px solid var(--primary-color);
+  }
+  
+  .modal-footer {
+    border-top: 1px solid var(--primary-color);
+  }
+  
+  /* Button Custom Styling */
+  .btn-custom-primary {
+    background-color: var(--accent-color);
+    color: var(--text-color);  /* Important */
+  }
+  
+  .btn-custom-primary:hover {
+    background-color: var(--hover-color);
+    color: var(--text-color);  /* Ensure on hover also */
+  }
+  
+  .btn-custom-outline {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    background-color: transparent;
+  }
+  
+  .btn-custom-outline:hover {
+    background-color: var(--hover-color);
+    color: var(--text-color);
+  }
+  
+  /* Animation */
+  @keyframes fadeInUp {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+
+
+
+  .page-link {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-color: var(--primary-color);
+}
+
+.page-item.active .page-link {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #fff;
+}
+
+.page-link:hover {
+  background-color: var(--hover-color);
+  color: #fff;
+}
