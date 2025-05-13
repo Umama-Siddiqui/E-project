@@ -80,7 +80,7 @@
     </section>
     <?php include '../phpwork/sms_log.php'; ?>
 
-    <section class="sms-log-table py-4">
+    <section class="sms-log-table py-4 mb-5">
         <div class="container">
             <div class="table-responsive animate__animated animate__fadeInUp">
             <?php if (!empty($sms_logs) && count($sms_logs) > 0): ?>
