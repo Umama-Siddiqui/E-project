@@ -17,6 +17,10 @@
   <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
+  <!-- Table CSS -->
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.0/css/dataTables.dataTables.css">
+
   <!-- Custom CSS -->
   <link href="../css/view_couriers.css" rel="stylesheet">
   <link href="../css/navbar.css" rel="stylesheet">
@@ -114,7 +118,7 @@
       </div>
 
       <div class="table-responsive">
-        <table class="table table-bordered table-dark table-hover shadow">
+        <table class="table table-bordered table-dark table-hover shadow" id="myTable">
           <thead class="table-light text-dark">
             <tr>
               <th>Tracking #</th>
@@ -290,6 +294,8 @@
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.datatables.net/2.3.0/js/dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
     AOS.init();
     function openEditModal(id, name, phone, address) {
@@ -309,6 +315,7 @@
       document.getElementById('status_parcel_id').value = id;
       new bootstrap.Modal(document.getElementById('statusModal')).show();
     }
+    let table = new DataTable('#myTable');
   </script>
   
 
