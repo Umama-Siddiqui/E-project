@@ -12,10 +12,10 @@ body {
     background-color: var(--primary-color);
     color: var(--text-color);
     font-family: sans-serif;
-    padding: 2rem;
+    
 }
 
-h2 {
+.section-heading{
     color: var(--accent-color);
     text-align: center;
     margin-top: 3rem;
