@@ -1,6 +1,6 @@
 <?php
 $page = 'add_courier'; 
-include '../phpwork/check.php';
+include '../phpwork/check2.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +30,7 @@ include '../phpwork/check.php';
 
   <!-- Include Navbar -->
   <?php include '../phpwork/nav.php'; ?>
-
-  <?php include '../phpwork/sidebar.php'; ?>
+  <?php include '../phpwork/sidebar2.php'; ?>
   <?php include '../phpwork/fetch.php'; ?>
   <div class="main-content p-4">
     <!-- Page Title Section -->
@@ -41,7 +40,7 @@ include '../phpwork/check.php';
             <p class="">Fill the form below to register a new courier in the system.</p>
         </div>
         </div>
-        <form method="POST" action="../phpwork/courier_functions.php">
+        <form method="POST" action="../phpwork/agent_add_cour.php">
         <!-- Tracking Number Section -->
         <div class="container my-5">
             <div class="card shadow-sm tracking-card border-0">
@@ -156,17 +155,9 @@ include '../phpwork/check.php';
                 </div>
 
                 <!-- Branch From -->
-                <div class="col-md-6">
-                <label for="branchFrom" class="form-label">Branch From</label>
-                <select class="form-select parcel-input" id="branchFrom" name="branchFrom" required>
-                    <option value="">Select branch</option>
-                    <!-- PHP se branches dynamically aayengi -->
-                    
-                        <option value="1">Karachi</option>
-                        <option value="2">Islamabad</option>
-                    </select>
-                </select>
-                </div>
+                <?php $branchFrom = $_SESSION['branch_id'] ?? ''; ?>
+                <input type="hidden" name="branchFrom" value="<?= $branchFrom ?>">
+
 
                 <!-- Branch To -->
                 <div class="col-md-6">

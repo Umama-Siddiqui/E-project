@@ -1,3 +1,7 @@
+<?php
+$page = 'manage_agents'; 
+include '../phpwork/check.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,66 +83,66 @@
         <th>Name</th>
         <th>Email</th>
         <th>Branch</th>
-        <th>Password</th>
         <th>Created</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <?php
-      $result = $conn->query("
-        SELECT a.*, b.branch_name 
-        FROM agents a
-        LEFT JOIN branches b ON a.branch_id = b.branch_id
-        ORDER BY a.agent_id DESC
-      ");
+<?php
+$result = $conn->query("
+  SELECT u.user_id, u.full_name, u.email, u.branch_id, u.created_at, b.branch_name
+  FROM users u
+  LEFT JOIN branches b ON u.branch_id = b.branch_id
+  WHERE u.role = 'agent'
+  ORDER BY u.user_id DESC
+");
 
-      while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-          <td>{$row['agent_id']}</td>
-          <td>{$row['full_name']}</td>
-          <td>{$row['email']}</td>
-          <td>{$row['branch_name']}</td>
-          <td>{$row['password']}</td>
-          <td>{$row['created_at']}</td>
-          <td class='action-btns'>
-            <form method='POST' style='display:inline'>
-              <input type='hidden' name='id' value='{$row['agent_id']}'>
-              <input type='hidden' name='name' value='{$row['full_name']}'>
-              <input type='hidden' name='email' value='{$row['email']}'>
-              <input type='hidden' name='branch' value='{$row['branch_id']}'>
-              <button name='edit_prefill' class='btn btn-sm btn-outline-primary me-2'>
-                <i class='fas fa-edit'></i> Edit
-              </button>
-            </form>
+while ($row = $result->fetch_assoc()) {
+  echo "<tr>
+    <td>{$row['user_id']}</td>
+    <td>" . htmlspecialchars($row['full_name']) . "</td>
+    <td>" . htmlspecialchars($row['email']) . "</td>
+    <td>" . htmlspecialchars($row['branch_name']) . "</td>
+    <td>{$row['created_at']}</td>
+    <td class='action-btns'>
+      <form method='POST' style='display:inline'>
+        <input type='hidden' name='id' value='{$row['user_id']}'>
+        <input type='hidden' name='name' value='" . htmlspecialchars($row['full_name']) . "'>
+        <input type='hidden' name='email' value='" . htmlspecialchars($row['email']) . "'>
+        <input type='hidden' name='branch' value='{$row['branch_id']}'>
+        <button name='edit_prefill' class='btn btn-sm btn-outline-primary me-2'>
+          Edit
+        </button>
+      </form>
 
-            <!-- Delete Button with Modal Trigger -->
-            <button class='btn btn-sm btn-outline-danger' data-bs-toggle='modal' data-bs-target='#confirmDeleteModal{$row['agent_id']}'>
-              <i class='fas fa-trash'></i> Delete
-            </button>
+      <!-- Delete Button with Modal Trigger -->
+      <button class='btn btn-sm btn-outline-danger' data-bs-toggle='modal' data-bs-target='#confirmDeleteModal{$row['user_id']}'>
+        Delete
+      </button>
 
-            <!-- Delete Confirmation Modal -->
-            <div class='modal fade' id='confirmDeleteModal{$row['agent_id']}' tabindex='-1' aria-labelledby='deleteLabel{$row['agent_id']}' aria-hidden='true'>
-              <div class='modal-dialog modal-dialog-centered'>
-                <div class='modal-content bg-dark text-white'>
-                  <div class='modal-header border-secondary'>
-                    <h5 class='modal-title' id='deleteLabel{$row['agent_id']}'>Confirm Delete</h5>
-                    <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
-                  </div>
-                  <div class='modal-body'>
-                    Are you sure you want to delete agent <strong>{$row['full_name']}</strong>?
-                  </div>
-                  <div class='modal-footer border-secondary'>
-                    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                    <a href='?delete={$row['agent_id']}' class='btn btn-danger'>Yes, Delete</a>
-                  </div>
-                </div>
-              </div>
+      <!-- Delete Confirmation Modal -->
+      <div class='modal fade' id='confirmDeleteModal{$row['user_id']}' tabindex='-1' aria-labelledby='deleteLabel{$row['user_id']}' aria-hidden='true'>
+        <div class='modal-dialog modal-dialog-centered'>
+          <div class='modal-content bg-dark text-white'>
+            <div class='modal-header border-secondary'>
+              <h5 class='modal-title' id='deleteLabel{$row['user_id']}'>Confirm Delete</h5>
+              <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
             </div>
-          </td>
-        </tr>";
-      }
-      ?>
+            <div class='modal-body'>
+              Are you sure you want to delete agent <strong>" . htmlspecialchars($row['full_name']) . "</strong>?
+            </div>
+            <div class='modal-footer border-secondary'>
+              <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
+              <a href='?delete={$row['user_id']}' class='btn btn-danger'>Yes, Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>";
+}
+?>
+
     </tbody>
   </table>
 </div>
@@ -165,11 +169,9 @@
         <div class="col-md-6">
           <label>Branch</label>
           <select name="branch" id="edit_branch" class="form-select text-black" required>
-            <option value="Karachi">Karachi</option>
-            <option value="Lahore">Lahore</option>
-            <option value="Islamabad">Islamabad</option>
-            <option value="Multan">Multan</option>
-            <option value="Other">Other</option>
+            <option value="1">Karachi</option>
+            <option value="2">Lahore</option>
+            
           </select>
         </div>
         <div class="col-md-6">

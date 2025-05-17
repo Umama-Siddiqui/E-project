@@ -1,5 +1,20 @@
 <?php
 include '../db_connection.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $parcel_id = mysqli_real_escape_string($conn, $_POST['parcel_id']);
+    $status = mysqli_real_escape_string($conn, $_POST['status']);
+
+    // Update status
+    $sql = "UPDATE parcels SET status = '$status' WHERE parcel_id = '$parcel_id'";
+    $result = mysqli_query($conn, $sql);
+    header("Location: ../agent_dashboard/view_couriers.php?status_updated=1");
+ 
+    mysqli_close($conn);
+}
+?>
+<?php
+include '../db_connection.php';
 include 'sms_function.php'; // ← SMS wala function bhi include karo
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,6 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_query($conn, $sql);
 
     mysqli_close($conn);
-    header("Location: ../dashboard/view_couriers.php?status_updated=1");
+    header("Location: ../agent_dashboard/view_couriers.php?status_updated=1");
 }
 ?>

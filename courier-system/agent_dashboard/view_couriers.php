@@ -1,6 +1,6 @@
 <?php
 $page = 'view_couriers'; 
-include '../phpwork/check.php';
+include '../phpwork/check2.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +34,7 @@ include '../phpwork/check.php';
 
   <!-- Include Navbar -->
   <?php include '../phpwork/nav.php'; ?>
-  <?php include '../phpwork/sidebar.php'; ?>
+  <?php include '../phpwork/sidebar2.php'; ?>
   <?php include '../phpwork/fetch.php'; ?>
   <div class="main-content p-4">
     <!-- Page Title Section -->
@@ -47,26 +47,23 @@ include '../phpwork/check.php';
     <!-- Search & Filter Section -->
     <div class="container my-4">
       <div class="search-filter-box shadow-sm p-4 rounded">
-        <h5 class="mb-3 text-light">🔍 Search & Filter Couriers</h5>
+        <h5 class="mb-3 text-light text-center">🔍 Search & Filter Couriers</h5>
         <form action="view_couriers.php" method="GET">
           <div class="row g-3">
             <!-- Tracking Number -->
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-left: 10%;">
               <input type="text" name="tracking_number" class="form-control filter-input" placeholder="Tracking Number">
             </div>
 
             <!-- Sender/Receiver Name -->
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-left: 10%;">
               <input type="text" name="name" class="form-control filter-input" placeholder="Sender / Receiver Name">
             </div>
 
-            <!-- City -->
-            <div class="col-md-4">
-              <input type="text" name="city" class="form-control filter-input" placeholder="City">
-            </div>
+            
 
             <!-- Date Range -->
-            <div class="col-md-3">
+            <div class="col-md-3" style="margin-left: 10%;">
               <label class="form-label text-light">From Date</label>
               <input type="date" name="from_date" class="form-control filter-input">
             </div>
@@ -75,18 +72,6 @@ include '../phpwork/check.php';
               <label class="form-label text-light">To Date</label>
               <input type="date" name="to_date" class="form-control filter-input">
             </div>
-
-            <!-- City-wise Filter -->
-            <div class="col-md-3">
-              <label class="form-label text-light">Filter by City</label>
-              <select name="filter_city" class="form-select filter-input">
-                <option value="">All Cities</option>
-                <option value="Lahore">Lahore</option>
-                <option value="Karachi">Karachi</option>
-                <option value="Islamabad">Islamabad</option>
-              </select>
-            </div>
-
             <!-- Status Filter -->
             <div class="col-md-3">
               <label class="form-label text-light">Status</label>
@@ -107,7 +92,7 @@ include '../phpwork/check.php';
       </div>
     </div>
     <?php
-    include '../phpwork/view_couriers.php';  // Include the new PHP file for fetching data
+    include '../phpwork/agent_view_couriers.php';  // Include the new PHP file for fetching data
     ?>
 
     <div class="container my-5">
@@ -128,7 +113,6 @@ include '../phpwork/check.php';
               <th>Tracking #</th>
               <th>Sender</th>
               <th>Receiver</th>
-              <th>Origin</th>
               <th>Destination</th>
               <th>Booking Date</th>
               <th>Status</th>
@@ -142,7 +126,6 @@ include '../phpwork/check.php';
                   <td><?= htmlspecialchars($row['consignment_no']) ?></td>
                   <td><?= htmlspecialchars($row['sender_name']) ?></td>
                   <td><?= htmlspecialchars($row['receiver_name']) ?></td>
-                  <td><?= htmlspecialchars($row['branch_from_name']) ?></td>
                   <td><?= htmlspecialchars($row['branch_to_name']) ?></td>
                   <td><?= date('d M Y', strtotime($row['created_at'])) ?></td>
                   <td>
@@ -203,7 +186,7 @@ include '../phpwork/check.php';
     <!-- Edit Parcel Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-md">
-        <form method="POST" action="../phpwork/update_couriers.php">
+        <form method="POST" action="../phpwork/agent_update_couriers.php">
           <input type="hidden" name="parcel_id" id="edit_parcel_id">
           <div class="modal-content shadow-lg">
             <div class="modal-header bg-dark text-white">
@@ -236,7 +219,7 @@ include '../phpwork/check.php';
     <!-- Delete Confirmation Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-sm">
-        <form method="POST" action="../phpwork/delete_courier.php">
+        <form method="POST" action="../phpwork/agent_delete_courier.php">
           <input type="hidden" name="parcel_id" id="delete_parcel_id">
           <div class="modal-content shadow-lg">
             <div class="modal-header bg-dark text-white">
@@ -257,7 +240,7 @@ include '../phpwork/check.php';
 
     <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-md">
-        <form method="POST" action="../phpwork/update_status.php">
+        <form method="POST" action="../phpwork/agent_update_status.php">
           <input type="hidden" name="parcel_id" id="status_parcel_id">
           <div class="modal-content shadow-lg">
             <div class="modal-header bg-dark text-white">

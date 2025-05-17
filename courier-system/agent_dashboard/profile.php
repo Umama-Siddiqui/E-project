@@ -1,7 +1,3 @@
-<?php
-include '../phpwork/check.php';
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +26,13 @@ include '../phpwork/check.php';
 
   <!-- Include Navbar -->
   <?php include '../phpwork/sidebar.php'; ?>
-  <?php include '../phpwork/fetch.php'; ?>
-  <?php include '../phpwork/auth_check.php'; ?>
+  <?php include '../phpwork/agent_deshbord.php'; ?>
   <div class="main-content p-4">
   
     
   </div>
+  <?php include '../phpwork/footer.php'; ?>
+
 
 
 

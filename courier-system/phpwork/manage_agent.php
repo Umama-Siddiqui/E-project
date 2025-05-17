@@ -7,12 +7,15 @@ function sanitize($data) {
     return htmlspecialchars(trim($data));
 }
 
-// Add Agent
+// Initialize messages
 $add_error = $add_success = '';
+$edit_error = $edit_success = '';
+
+// ==== ADD AGENT ====
 if (isset($_POST['add_agent'])) {
     $name = sanitize($_POST['name']);
     $email = sanitize($_POST['email']);
-    $password = $_POST['password']; // Plain text (consider hashing in production)
+    $password = $_POST['password']; // Plain text from form
     $branch = intval($_POST['branch']);
 
     if ($name && $email && $password && $branch) {
@@ -21,19 +24,23 @@ if (isset($_POST['add_agent'])) {
         } elseif (strlen($password) < 6) {
             $add_error = "Password must be at least 6 characters.";
         } else {
-            $check = $conn->prepare("SELECT agent_id FROM agents WHERE email = ?");
+            // Check if email exists in users table with role 'agent'
+            $check = $conn->prepare("SELECT user_id FROM users WHERE email = ? AND role = 'agent'");
             $check->bind_param("s", $email);
             $check->execute();
             $check->store_result();
             if ($check->num_rows > 0) {
                 $add_error = "Email already exists.";
             } else {
-                $stmt = $conn->prepare("INSERT INTO agents (full_name, email, password, branch_id) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("sssi", $name, $email, $password, $branch);
+                // Hash password
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                $stmt = $conn->prepare("INSERT INTO users (full_name, email, password, role, branch_id) VALUES (?, ?, ?, 'agent', ?)");
+                $stmt->bind_param("sssi", $name, $email, $hashed_password, $branch);
                 if ($stmt->execute()) {
                     $add_success = "Agent added successfully.";
                 } else {
-                    $add_error = "Error adding agent.";
+                    $add_error = "Error adding agent: " . $stmt->error;
                 }
                 $stmt->close();
             }
@@ -44,65 +51,83 @@ if (isset($_POST['add_agent'])) {
     }
 }
 
-// Delete Agent
+// ==== DELETE AGENT ====
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
-    $conn->query("DELETE FROM agents WHERE agent_id = $id");
+
+    // Delete only if role = 'agent' for safety
+    $del_stmt = $conn->prepare("DELETE FROM users WHERE user_id = ? AND role = 'agent'");
+    $del_stmt->bind_param("i", $id);
+    $del_stmt->execute();
+    $del_stmt->close();
+
     header("Location: " . strtok($_SERVER["REQUEST_URI"], '?'));
     exit;
 }
 
-// Edit Agent
-$edit_error = $edit_success = '';
+// ==== EDIT AGENT ====
 if (isset($_POST['edit_agent'])) {
-    $id = intval($_POST['id']);
+    $id = intval($_POST['id']);  // user_id from form
     $name = sanitize($_POST['name']);
     $email = sanitize($_POST['email']);
     $branch = intval($_POST['branch']);
     $password = $_POST['password'];
 
-    $update_sql = "UPDATE agents SET full_name=?, email=?, branch_id=?";
-    $params = [$name, $email, $branch];
-    $types = "ssi";
-
-    if (!empty($password)) {
-        if (strlen($password) < 6) {
-            $edit_error = "Password must be at least 6 characters.";
+    if ($name && $email && $branch) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $edit_error = "Invalid email format.";
         } else {
-            $update_sql .= ", password=?";
-            $params[] = $password;
-            $types .= "s";
-        }
-    }
+            // Start building update query and params
+            $update_sql = "UPDATE users SET full_name = ?, email = ?, branch_id = ? WHERE user_id = ? AND role = 'agent'";
+            $params = [$name, $email, $branch, $id];
+            $types = "ssii";
 
-    $update_sql .= " WHERE agent_id=?";
-    $params[] = $id;
-    $types .= "i";
+            // If password is provided, validate and hash it, then add to update query
+            if (!empty($password)) {
+                if (strlen($password) < 6) {
+                    $edit_error = "Password must be at least 6 characters.";
+                } else {
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                    $update_sql = "UPDATE users SET full_name = ?, email = ?, branch_id = ?, password = ? WHERE user_id = ? AND role = 'agent'";
+                    $params = [$name, $email, $branch, $hashed_password, $id];
+                    $types = "ssssi";
+                }
+            }
 
-    if (!$edit_error) {
-        $stmt = $conn->prepare($update_sql);
-        $stmt->bind_param($types, ...$params);
-        if ($stmt->execute()) {
-            $edit_success = "Agent updated successfully.";
-        } else {
-            $edit_error = "Error updating agent.";
+            if (!$edit_error) {
+                $stmt = $conn->prepare($update_sql);
+                if ($stmt === false) {
+                    $edit_error = "Prepare failed: " . $conn->error;
+                } else {
+                    $stmt->bind_param($types, ...$params);
+                    if ($stmt->execute()) {
+                        $edit_success = "Agent updated successfully.";
+                    } else {
+                        $edit_error = "Update failed: " . $stmt->error;
+                    }
+                    $stmt->close();
+                }
+            }
         }
-        $stmt->close();
+    } else {
+        $edit_error = "Name, Email and Branch are required.";
     }
 }
 
-// Fetch branches for dropdown
+// ==== FETCH BRANCHES FOR DROPDOWN ====
 $branch_options = [];
-$branches_query = $conn->query("SELECT * FROM branches");
+$branches_query = $conn->query("SELECT * FROM branches ORDER BY branch_name");
 while ($row = $branches_query->fetch_assoc()) {
     $branch_options[$row['branch_id']] = $row['branch_name'];
 }
 
-// Fetch agents with branch names
+// ==== FETCH AGENTS WITH BRANCH NAME ====
 $agents = $conn->query("
-  SELECT a.*, b.branch_name 
-  FROM agents a
-  LEFT JOIN branches b ON a.branch_id = b.branch_id
-  ORDER BY a.agent_id DESC
+    SELECT u.*, b.branch_name 
+    FROM users u
+    LEFT JOIN branches b ON u.branch_id = b.branch_id
+    WHERE u.role = 'agent'
+    ORDER BY u.user_id DESC
 ");
+
 ?>

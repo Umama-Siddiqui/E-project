@@ -1,9 +1,18 @@
 <?php
 include '../db_connection.php';
+include 'auth_check.php'; // Ensure user is logged in
 
-$message = ''; // Message ko empty initialize karo
+$message = ''; // Message ko initialize karo
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitParcel'])) {
+
+    // Agent ki branch ID session se lo
+    $branchFrom = $_SESSION['branch_id'] ?? null;
+    if (!$branchFrom) {
+        echo "<script>alert('❌ Branch information missing from session.'); window.history.back();</script>";
+        exit;
+    }
+
     $trackingNumber = $_POST['trackingNumber'] ?? '';
     $senderName = $_POST['senderName'] ?? '';
     $senderPhone = $_POST['senderContact'] ?? '';
@@ -13,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $receiverAddress = $_POST['receiverAddress'] ?? '';
     $parcelType = $_POST['parcelType'] ?? '';
     $weight = floatval($_POST['parcelWeight'] ?? 0);
-    $branchFrom = $_POST['branchFrom'] ?? '';
     $branchTo = $_POST['branchTo'] ?? '';
     $expectedDate = $_POST['expectedDate'] ?? '';
     $notes = $_POST['parcelNotes'] ?? '';
@@ -21,16 +29,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = 'Booked';
     $createdAt = date('Y-m-d H:i:s');
 
+    // Pricing logic
     $ratePerKg = 100;
     if ($parcelType === 'Express') $ratePerKg = 150;
     if ($parcelType === 'Same-Day') $ratePerKg = 200;
     $price = $weight * $ratePerKg;
 
+    // Validation
     if (
         empty($trackingNumber) || empty($senderName) || empty($senderPhone) || empty($senderAddress) ||
         empty($receiverName) || empty($receiverPhone) || empty($receiverAddress) ||
-        empty($parcelType) || empty($weight) || empty($branchFrom) ||
-        empty($branchTo) || empty($expectedDate)
+        empty($parcelType) || empty($weight) || empty($branchTo) || empty($expectedDate)
     ) {
         $message = "❌ Please fill all required fields.";
     } else {
@@ -50,7 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "ssssssssddsssss",
                 $trackingNumber, $senderName, $senderPhone, $senderAddress,
                 $receiverName, $receiverPhone, $receiverAddress, $parcelType,
-                $weight, $price, $status, $branchFrom, $branchTo, $expectedDate, $createdAt
+                $weight, $price, $status, $branchFrom, $branchTo, $expectedDate,
+                $createdAt
             );
 
             if ($stmt->execute()) {
@@ -65,8 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->close();
     }
 
-    // Show JavaScript alert on same page
-    echo "<script>alert(" . json_encode($message) . ");
-    window.location.href = '../dashboard/add_courier.php';</script>";
+    echo "<script>alert(" . json_encode($message) . "); window.location.href = '../agent_dashboard/add_courier.php';</script>";
 }
 ?>

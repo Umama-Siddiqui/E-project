@@ -1,6 +1,6 @@
 <?php
 $page = 'reports'; 
-include '../phpwork/check.php';
+include '../phpwork/check2.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +21,10 @@ include '../phpwork/check.php';
   <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
+  <!-- Table CSS -->
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.0/css/dataTables.dataTables.css">
+
   <!-- Custom CSS -->
   <link href="../css/view_couriers.css" rel="stylesheet">
   <link href="../css/navbar.css" rel="stylesheet">
@@ -30,39 +34,36 @@ include '../phpwork/check.php';
 
   <!-- Include Navbar -->
   <?php include '../phpwork/nav.php'; ?>
-  <?php include '../phpwork/sidebar.php'; ?>
+  <?php include '../phpwork/sidebar2.php'; ?>
   <?php include '../phpwork/fetch.php'; ?>
   <div class="main-content p-4">
     <!-- Page Title Section -->
     <div class="container my-4">
       <div class="manage-couriers-title-box text-center py-4">
-        <h2 class="manage-couriers-title">Generate Report</h2>
-        
+        <h2 class="manage-couriers-title">View & Manage Couriers</h2>
+        <p class="">Track, update, and manage all courier records from this panel.</p>
       </div>
     </div>
     <!-- Search & Filter Section -->
     <div class="container my-4">
       <div class="search-filter-box shadow-sm p-4 rounded">
-        <h5 class="mb-3 text-light">🔍 Search & Filter Report</h5>
+        <h5 class="mb-3 text-light text-center">🔍 Search & Filter Couriers</h5>
         <form action="view_couriers.php" method="GET">
           <div class="row g-3">
             <!-- Tracking Number -->
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-left: 10%;">
               <input type="text" name="tracking_number" class="form-control filter-input" placeholder="Tracking Number">
             </div>
 
             <!-- Sender/Receiver Name -->
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-left: 10%;">
               <input type="text" name="name" class="form-control filter-input" placeholder="Sender / Receiver Name">
             </div>
 
-            <!-- City -->
-            <div class="col-md-4">
-              <input type="text" name="city" class="form-control filter-input" placeholder="City">
-            </div>
+            
 
             <!-- Date Range -->
-            <div class="col-md-3">
+            <div class="col-md-3" style="margin-left: 10%;">
               <label class="form-label text-light">From Date</label>
               <input type="date" name="from_date" class="form-control filter-input">
             </div>
@@ -71,18 +72,6 @@ include '../phpwork/check.php';
               <label class="form-label text-light">To Date</label>
               <input type="date" name="to_date" class="form-control filter-input">
             </div>
-
-            <!-- City-wise Filter -->
-            <div class="col-md-3">
-              <label class="form-label text-light">Filter by City</label>
-              <select name="filter_city" class="form-select filter-input">
-                <option value="">All Cities</option>
-                <option value="Lahore">Lahore</option>
-                <option value="Karachi">Karachi</option>
-                <option value="Islamabad">Islamabad</option>
-              </select>
-            </div>
-
             <!-- Status Filter -->
             <div class="col-md-3">
               <label class="form-label text-light">Status</label>
@@ -103,11 +92,11 @@ include '../phpwork/check.php';
       </div>
     </div>
     <?php
-    include '../phpwork/view_couriers.php';  // Include the new PHP file for fetching data
+    include '../phpwork/agent_view_couriers.php';  // Include the new PHP file for fetching data
     ?>
 
     <div class="container my-5">
-      <h3><i class="fa fa-box"></i> Report Display</h3>
+      <h3 class="text-light mb-4">📦 Parcel List</h3>
       <div class="d-flex justify-content-end mb-3 gap-2">
         <a href="../phpwork/export_pdf.php" class="btn btn-sm btn-danger">
           <i class="fas fa-file-pdf me-1"></i> Download PDF
@@ -118,13 +107,12 @@ include '../phpwork/check.php';
       </div>
 
       <div class="table-responsive">
-        <table class="table table-bordered table-dark table-hover shadow">
+        <table class="table table-bordered table-dark table-hover shadow" id="myTable">
           <thead class="table-light text-dark">
             <tr>
               <th>Tracking #</th>
               <th>Sender</th>
               <th>Receiver</th>
-              <th>Origin</th>
               <th>Destination</th>
               <th>Booking Date</th>
               <th>Status</th>
@@ -137,7 +125,6 @@ include '../phpwork/check.php';
                   <td><?= htmlspecialchars($row['consignment_no']) ?></td>
                   <td><?= htmlspecialchars($row['sender_name']) ?></td>
                   <td><?= htmlspecialchars($row['receiver_name']) ?></td>
-                  <td><?= htmlspecialchars($row['branch_from_name']) ?></td>
                   <td><?= htmlspecialchars($row['branch_to_name']) ?></td>
                   <td><?= date('d M Y', strtotime($row['created_at'])) ?></td>
                   <td>
@@ -174,7 +161,8 @@ include '../phpwork/check.php';
         </nav>
       </div>
     </div>
-   
+  
+
 
 
 
@@ -191,8 +179,28 @@ include '../phpwork/check.php';
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.datatables.net/2.3.0/js/dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
     AOS.init();
+    function openEditModal(id, name, phone, address) {
+      document.getElementById('edit_parcel_id').value = id;
+      document.getElementById('edit_receiver_name').value = name;
+      document.getElementById('edit_receiver_phone').value = phone;
+      document.getElementById('edit_receiver_address').value = address;
+      new bootstrap.Modal(document.getElementById('editModal')).show();
+    }
+
+    function openDeleteModal(id) {
+      document.getElementById('delete_parcel_id').value = id;
+      new bootstrap.Modal(document.getElementById('deleteModal')).show();
+    }
+
+    function openStatusModal(id) {
+      document.getElementById('status_parcel_id').value = id;
+      new bootstrap.Modal(document.getElementById('statusModal')).show();
+    }
+    let table = new DataTable('#myTable');
   </script>
   
 

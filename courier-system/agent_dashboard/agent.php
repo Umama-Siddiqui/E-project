@@ -1,7 +1,6 @@
 <?php
-$page = 'admin'; 
-include '../phpwork/check.php';
-
+$page = 'agent'; 
+include '../phpwork/check2.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,38 +31,18 @@ include '../phpwork/check.php';
 
   <!-- Include Navbar -->
   <?php include '../phpwork/nav.php'; ?>
-  <?php include '../phpwork/sidebar.php'; ?>
-  <?php include '../phpwork/fetch.php'; ?>
+  <?php include '../phpwork/sidebar2.php'; ?>
+  <?php include '../phpwork/agent_fetch.php'; ?>
   <div class="main-content p-4">
     <section>
       <div class="container my-5">
-        <div class="row">
+        <div class="row"style="align-items: center; justify-content: center;">
           <!-- Total Parcels Card -->
           <div class="col-md-4 mb-4">
             <div class="card shadow-lg rounded p-3" style="background-color: var(--secondary-color);">
               <div class="card-body">
                 <h5 class="card-title" style="color: var(--text-color);">Total Parcels</h5>
                 <p class="card-text display-4" style="color: var(--accent-color);"><?php echo $total_parcels; ?></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Total Agents Card -->
-          <div class="col-md-4 mb-4">
-            <div class="card shadow-lg rounded p-3" style="background-color: var(--secondary-color);">
-              <div class="card-body">
-                <h5 class="card-title" style="color: var(--text-color);">Total Agents</h5>
-                <p class="card-text display-4" style="color: var(--accent-color);"><?php echo $total_agents; ?></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Total Customers Card -->
-          <div class="col-md-4 mb-4">
-            <div class="card shadow-lg rounded p-3" style="background-color: var(--secondary-color);">
-              <div class="card-body">
-                <h5 class="card-title" style="color: var(--text-color);">Total Customers</h5>
-                <p class="card-text display-4" style="color: var(--accent-color);"><?php echo $total_customers; ?></p>
               </div>
             </div>
           </div>

@@ -9,14 +9,16 @@ $result = mysqli_query($conn, "SELECT COUNT(*) AS total_parcels FROM parcels");
 $data = mysqli_fetch_assoc($result);
 $total_parcels = $data['total_parcels'];
 
-$result = mysqli_query($conn, "SELECT COUNT(*) AS total_agents FROM agents");
+// Count total agents
+$result = mysqli_query($conn, "SELECT COUNT(*) AS total_agents FROM users WHERE role = 'agent'");
 $data = mysqli_fetch_assoc($result);
 $total_agents = $data['total_agents'];
 
-
-$result = mysqli_query($conn, "SELECT COUNT(*) AS total_customers FROM customers");
+// Count total customers
+$result = mysqli_query($conn, "SELECT COUNT(*) AS total_customers FROM users WHERE role = 'customer'");
 $data = mysqli_fetch_assoc($result);
 $total_customers = $data['total_customers'];
+
 
 ?>
 <?php

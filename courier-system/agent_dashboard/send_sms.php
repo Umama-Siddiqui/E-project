@@ -1,6 +1,6 @@
 <?php
 $page = 'sms_log'; 
-include '../phpwork/check.php';
+include '../phpwork/check2.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@ include '../phpwork/check.php';
 
   <!-- Include Navbar -->
   <?php include '../phpwork/nav.php'; ?>
-  <?php include '../phpwork/sidebar.php'; ?>
+  <?php include '../phpwork/sidebar2.php'; ?>
   <?php include '../phpwork/fetch.php'; ?>
   <div class="main-content p-4">
     <!-- SMS Logs Section -->
