@@ -25,7 +25,7 @@ if (isset($_POST['login'])) {
             } elseif ($user['role'] == 'agent') {
                 header("Location: agent_dashboard/agent.php");
             } else {
-                header("Location: track/index.php");
+                header("Location: index.php");
             }
             exit;
         } else {
