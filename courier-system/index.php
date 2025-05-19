@@ -20,6 +20,7 @@
 
   <!-- Custom CSS -->
   <link href="css/index.css" rel="stylesheet">
+  <link href="css/login.css" rel="stylesheet">
 
 </head>
 <body>
@@ -42,8 +43,8 @@
                 <a href="#" class="btn btn-outline-light shake-button" data-bs-toggle="modal" data-bs-target="#trackModal">📦 Track Parcel</a>
 
                 <?php if (!isset($_SESSION['user_id'])): ?>
-                    <a href="login.php" class="btn btn-custom">Login</a>
-                    <a href="register.php" class="btn btn-custom">Register</a>
+                    <a href="#" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    <a href="#" class="btn btn-custom"  data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
                 <?php else: ?>
                     <!-- Profile Dropdown -->
                     <div class="dropdown">
@@ -318,6 +319,54 @@
 </div>
 
 
+
+
+<div class="modal fade mt-5" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content login-container">
+      <div class="modal-header">
+        <h2 class="modal-title" id="loginModalLabel">Login</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="login.php">
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <button type="submit" name="login">Login</button>
+        </form>
+        <?php if (isset($_GET['error'])): ?>
+          <p><?php echo htmlspecialchars($_GET['error']); ?></p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content login-container">
+      <div class="modal-header">
+        <h2 class="modal-title" id="registerModalLabel">Register</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="register.php">
+          <input type="text" name="full_name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+          <textarea name="address" placeholder="Address" rows="3" required style="resize: none;"></textarea>
+          <input type="hidden" name="role" value="customer"> <!-- Fixed role -->
+          <button type="submit" name="register">Register</button>
+        </form>
+        <?php if (isset($_GET['register_error'])): ?>
+          <p><?php echo htmlspecialchars($_GET['register_error']); ?></p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</div>
 
   
 

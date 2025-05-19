@@ -160,15 +160,15 @@ while ($row = $result->fetch_assoc()) {
         <input type="hidden" name="id" id="edit_id">
         <div class="col-md-6">
           <label>Name</label>
-          <input type="text" name="name" id="edit_name" class="form-control text-black" required>
+          <input type="text" name="name" id="edit_name" class="form-control text-white" required>
         </div>
         <div class="col-md-6">
           <label>Email</label>
-          <input type="email" name="email" id="edit_email" class="form-control text-black" required>
+          <input type="email" name="email" id="edit_email" class="form-control text-white" required>
         </div>
         <div class="col-md-6">
           <label>Branch</label>
-          <select name="branch" id="edit_branch" class="form-select text-black" required>
+          <select name="branch" id="edit_branch" class="form-select text-white" required>
             <option value="1">Karachi</option>
             <option value="2">Lahore</option>
             
@@ -176,7 +176,7 @@ while ($row = $result->fetch_assoc()) {
         </div>
         <div class="col-md-6">
           <label>New Password</label>
-          <input type="password" name="password" class="form-control text-black">
+          <input type="password" name="password" class="form-control text-white">
         </div>
       </div>
       <div class="modal-footer">

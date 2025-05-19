@@ -1,23 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Generate Password Hash</title>
-</head>
-<body>
-    <h2>Generate Hashed Password</h2>
+<?php
+include 'db_connection.php';
 
-    <form method="POST">
-        <input type="text" name="plain_password" placeholder="Enter plain password" required>
-        <button type="submit" name="generate">Generate Hash</button>
-    </form>
+if (isset($_POST['register'])) {
+    $full_name = trim($_POST['full_name']);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $address = trim($_POST['address']);
+    $role = 'customer';
 
-    <?php
-    if (isset($_POST['generate'])) {
-        $plain = $_POST['plain_password'];
-        $hash = password_hash($plain, PASSWORD_DEFAULT);
-        echo "<p><strong>Plain:</strong> " . htmlspecialchars($plain) . "</p>";
-        echo "<p><strong>Hashed:</strong> " . htmlspecialchars($hash) . "</p>";
+    // Check if email already exists
+    $check_query = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
+    $check_result = mysqli_query($conn, $check_query);
+    if (mysqli_num_rows($check_result) > 0) {
+        header("Location: index.php?register_error=Email already registered!");
+        exit;
     }
-    ?>
-</body>
-</html>
+
+    // Password match check
+    if ($password !== $confirm_password) {
+        header("Location: index.php?register_error=Passwords do not match!");
+        exit;
+    }
+
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert user (with address)
+    $insert_query = "INSERT INTO users (full_name, email, password, role, address) 
+                     VALUES ('$full_name', '$email', '$hashed_password', '$role', '$address')";
+
+    if (mysqli_query($conn, $insert_query)) {
+        header("Location: index.php?success=Registration successful!");
+    } else {
+        header("Location: index.php?register_error=Something went wrong!");
+    }
+}
+?>

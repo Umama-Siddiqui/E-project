@@ -1,0 +1,186 @@
+:root {
+  --primary-color: #0F0F0F;
+  --secondary-color: #1F1F1F;
+  --accent-color: #EF4444;
+  --hover-color: #DC2626;
+  --text-color: #F5F5F5;
+  --success-color: #10B981;
+  --warning-color: #F59E0B;
+}
+.add-branch-section {
+  /* background-color: var(--primary-color); */
+  color: var(--text-color);
+  padding: 60px 0;
+}
+
+.branch-card {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  border-radius: 15px;
+  animation: zoomIn 0.7s ease forwards;
+  padding: 30px 40px;
+}
+
+.branch-card h2 {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+.form-control {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: var(--text-color);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+  outline: none;
+}
+
+.btn-danger {
+  background-color: var(--accent-color);
+  border: none;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(220, 38, 38, 0.6);
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+/* Action Buttons Styling */
+.branch-actions .btn-action {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.branch-actions  a{
+    text-decoration: none;
+}
+/* Specific Colors */
+.btn-edit {
+  background-color: #F59E0B; /* warning */
+  color: #0F0F0F;
+}
+.btn-edit:hover {
+  background-color: #D97706;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  background-color: #EF4444; /* red */
+  color: #fff;
+}
+.btn-delete:hover {
+  background-color: #DC2626;
+  transform: scale(1.05);
+}
+
+.btn-view {
+  background-color: #3B82F6; /* blue */
+  color: #fff;
+}
+.btn-view:hover {
+  background-color: #2563EB;
+  transform: scale(1.05);
+}
+
+
+
+
+.edit-branch-modal {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  animation: fadeInUp 0.5s ease;
+}
+
+.edit-branch-modal .modal-header {
+  border-bottom: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.edit-branch-modal .form-control {
+  background-color: var(--primary-color);
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
+}
+
+.edit-branch-modal .form-control:focus {
+  border-color: var(--hover-color);
+  box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25);
+}
+
+.edit-branch-modal .modal-footer {
+  border-top: 1px solid var(--primary-color);
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+.custom-modal {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 15px;
+  animation: fadeSlideUp 0.4s ease-in-out;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
