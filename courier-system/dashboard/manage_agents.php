@@ -44,21 +44,21 @@ include '../phpwork/check.php';
             <div class="row mb-3">
                 <div class="col-md-6">
                 <label class="form-label">👤 Agent Name</label>
-                <input type="text" name="name" class="form-control" required>
+                <input type="text" name="name" class="form-control text-white" required>
                 </div>
                 <div class="col-md-6">
                 <label class="form-label">📧 Email</label>
-                <input type="email" name="email" class="form-control" required>
+                <input type="email" name="email" class="form-control text-white" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
                 <label class="form-label">🔐 Password</label>
-                <input type="password" name="password" class="form-control" required>
+                <input type="password" name="password" class="form-control text-white" required>
                 </div>
                 <div class="col-md-6">
-                <label class="form-label">🏢 Branch Assign</label>
+                <label class="form-label text-white">🏢 Branch Assign</label>
                 <select name="branch" class="form-select" required>
                     <option value="">-- Select Branch --</option>
                     <option value="1">Karachi</option>
@@ -170,7 +170,7 @@ while ($row = $result->fetch_assoc()) {
           <label>Branch</label>
           <select name="branch" id="edit_branch" class="form-select text-white" required>
             <option value="1">Karachi</option>
-            <option value="2">Lahore</option>
+            <option value="2">Islamabad</option>
             
           </select>
         </div>

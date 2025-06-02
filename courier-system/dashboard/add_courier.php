@@ -114,6 +114,13 @@ include '../phpwork/check.php';
                         required pattern="^03[0-9]{9}$" 
                         title="Enter valid Pakistani number. Example: 03XXXXXXXXX">
                 </div>
+                
+                <div class="col-md-6">
+                <label for="receiveremail" class="form-label">Receiver Email-Address</label>
+                <input type="email" class="form-control receiver-input" id="receiveremail" name="receiveremail" 
+                        required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                        title="Enter valid Email-address. Example: example@gmail.com">
+                </div>
 
                 <!-- Receiver Address -->
                 <div class="col-12">

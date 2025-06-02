@@ -1,5 +1,5 @@
 <?php
-$page = 'add_courier'; 
+$page = 'manage_branches'; 
 include '../phpwork/check.php';
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ include '../phpwork/check.php';
   <div class="container">
     <div class="branch-card p-4 rounded mx-auto">
       <h2 class="mb-4 text-center">🏢 Add New Branch</h2>
-      <form action="add_branch.php" method="POST" class="mx-auto" style="max-width: 600px;">
+      <form action="manage_branches.php" method="POST" class="mx-auto" style="max-width: 600px;">
         <div class="mb-3">
           <label for="branch_name" class="form-label">Branch Name <span class="text-danger">*</span></label>
           <input type="text" class="form-control" id="branch_name" name="branch_name" required>

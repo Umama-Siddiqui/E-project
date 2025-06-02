@@ -1,0 +1,155 @@
+:root {
+    --primary-color: #0F0F0F;
+    --secondary-color: #1F1F1F;
+    --accent-color: #EF4444;
+    --hover-color: #DC2626;
+    --text-color: #F5F5F5;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+}
+
+/* Container and section base styling */
+.manage-customers-section {
+    background: var(--secondary-color);
+    padding: 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.manage-customers-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Title styling */
+.customers-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Subtitle styling */
+.customers-subtext {
+    font-size: 1.1rem;
+    color: #CCCCCC;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-wrapper input[type="text"] {
+  width: 100%;
+  padding: 12px 45px 12px 18px;
+  font-size: 1rem;
+  border-radius: 25px;
+  border: 2px solid var(--accent-color);
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+.search-wrapper input[type="text"]::placeholder {
+  color: #bbbbbb;
+}
+
+.search-wrapper input[type="text"]:focus {
+  border-color: var(--hover-color);
+  box-shadow: 0 0 12px var(--accent-color);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.search-wrapper button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.search-wrapper button:hover {
+  color: var(--hover-color);
+}
+
+@media (max-width: 768px) {
+  .search-wrapper {
+    width: 90%;
+  }
+}
+
+
+
+.rounded-table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table thead th {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.table tbody td {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.table-hover tbody tr:hover {
+  background-color: var(--secondary-color);
+}
+
+.btn {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+
+
+.modal-content {
+  border-radius: 10px;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.modal-header, .modal-footer {
+  border: none;
+}
+
+
+
+.modal-content {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 10px;
+}
+
+.modal-footer .btn-danger {
+  background-color: var(--accent-color);
+}
+.modal-footer .btn-danger:hover {
+  background-color: var(--hover-color);
+}

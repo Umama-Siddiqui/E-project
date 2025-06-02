@@ -4,8 +4,11 @@
   <!-- Topbar -->
    <nav class="navbar navbar-expand text-white px-4 justify-content-end" style="margin-top: -20;">
   <div class="dropdown">
+    
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-      <i class="fas fa-user-circle fs-4"></i>
+      <span class="text-white fw-bold me-3">
+       <?php echo isset($_SESSION['name']) ? htmlspecialchars($_SESSION['name']) : ''; ?>
+      </span><i class="fas fa-user-circle fs-4"></i>
     </a>
     <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="profileDropdown">
       <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">Profile</a></li>

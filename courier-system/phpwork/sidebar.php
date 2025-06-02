@@ -5,7 +5,12 @@
 
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
-    <h2>Courier System</h2>
+    
+    <div class="sidebar-logo">
+      <img src="../css/logo1.png" alt="Courier Logo" class="main-logo">
+      <img src="../css/logo.png" alt="Courier Logo" class="hover-logo">
+    </div>
+
 
     <a href="admin.php" class="<?php echo ($page == 'admin') ? 'active' : ''; ?>">
       <i class="fas fa-gauge"></i><span class="text">Dashboard</span>

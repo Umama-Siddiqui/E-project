@@ -457,13 +457,11 @@
   width: 60px;
   height: 60px;
   object-fit: contain;
-  filter: drop-shadow(0 0 3px var(--accent-color));
+  /* filter: drop-shadow(0 0 3px var(--accent-color)); */
   transition: transform 0.4s ease;
 }
 
-.footer-logo img:hover {
-  transform: rotate(15deg) scale(1.1);
-}
+
 
 .footer-logo h2 {
   font-size: 1.8rem;
@@ -728,4 +726,51 @@
 .dropdown-menu .dropdown-item:hover {
   background-color: var(--accent-color, #3B82F6);
   color: #fff;
+}
+
+
+
+
+
+.navbar {
+    height: 100px;
+}
+
+.navbar-logo {
+  height: 30vh;
+  width: auto;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Default logo visible */
+.main-logo {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Hover logo hidden by default */
+.hover-logo {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* On hover, swap visibility */
+.navbar-brand:hover .main-logo {
+  opacity: 0;
+}
+
+.navbar-brand:hover .hover-logo {
+  opacity: 1;
+}
+
+.footer-logo img{
+  height: 40vh;         /* Adjusted to be slightly smaller */
+  width: auto;
+  object-fit: contain;
+  margin-top: -100px;
+  margin-bottom: -70px;
 }

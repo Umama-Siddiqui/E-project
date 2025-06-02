@@ -190,4 +190,49 @@
   background-color: var(--hover-color);
   color: white;
 }
-  
+
+
+.sidebar-logo {
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  width: 180px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.sidebar-logo img {
+  width: 180px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Pehli image default visible hai */
+.sidebar-logo .main-logo {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Doosri image default chhupi hui hai */
+.sidebar-logo .hover-logo {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Jab hover karein to pehli image chhup jaye aur doosri dikh jaye */
+.sidebar-logo:hover .main-logo {
+  opacity: 0;
+}
+
+.sidebar-logo:hover .hover-logo {
+  opacity: 1;
+}
+
+
+

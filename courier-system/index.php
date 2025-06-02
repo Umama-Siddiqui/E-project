@@ -27,10 +27,17 @@
     <!-- Navbar HTML (Responsive + Themed) -->
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">MyCompany</a>
+        <!-- ✅ Logo Image with link -->
+       <a class="navbar-brand d-flex align-items-center position-relative" href="index.php" style="height: 30vh;">
+          <img src="css/logo1.png" alt="Logo" class="navbar-logo main-logo">
+          <img src="css/logo.png" alt="Logo" class="navbar-logo hover-logo">
+       </a>
+
+
         <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
         </button>
+
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
@@ -39,16 +46,21 @@
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
 
-            <div class="d-flex gap-2 align-items-center">
+            <div class="d-flex gap-2 align-items-center ms-3">
                 <a href="#" class="btn btn-outline-light shake-button" data-bs-toggle="modal" data-bs-target="#trackModal">📦 Track Parcel</a>
 
                 <?php if (!isset($_SESSION['user_id'])): ?>
+                    <!-- ✅ Guest Buttons -->
                     <a href="#" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                    <a href="#" class="btn btn-custom"  data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
+                    <a href="#" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
                 <?php else: ?>
-                    <!-- Profile Dropdown -->
+                    <!-- ✅ Logged-in user with name & dropdown -->
+                    
                     <div class="dropdown">
-                        <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                          <span class="w2 fw-bold">
+                              <?php echo isset($_SESSION['user_name']) ? htmlspecialchars($_SESSION['user_name']) : 'User'; ?>
+                          </span>
                             <i class="fas fa-user-circle"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
@@ -63,11 +75,12 @@
 </nav>
 
 
+
    <section class="hero-section">
   <div class="hero-overlay">
     <div class="hero-content" data-aos="fade-up">
       <div class="hero-logo">
-        <h1>FastEx Couriers</h1>
+      <h1>Courier Management System</h1>
       </div>
       <p class="hero-tagline">Delivering Trust at Speed</p>
       <a href="login.php" class="hero-cta">🚚 Track Your Parcel</a>
@@ -187,7 +200,7 @@
                 <h5>📞 Phone</h5>
                 <p>+92 300 1234567</p>
                 <h5>✉️ Email</h5>
-                <p>support@couriersystem.pk</p>
+                <p>CourierManagementSystem@gmail.com</p>
                 </div>
             </div>
 
@@ -218,8 +231,7 @@
             <!-- Logo & Description -->
             <div class="footer-top">
             <div class="footer-logo">
-                <img src="logo.png" alt="SpeedyCourier Logo" />
-                <h2>SpeedyCourier</h2>
+                <img src="css/logo.png" alt="SpeedyCourier Logo"/>
             </div>
             <p class="footer-desc">
                 Reliable courier services delivering your packages swiftly and safely across the globe.
@@ -231,7 +243,7 @@
             <h3>Contact Us</h3>
             <p>123 Speedy Street, Delivery City, Country</p>
             <p>Phone: +92 300 1234567</p>
-            <p>Email: support@speedycourier.com</p>
+            <p>Email: CourierManagementSystem@gmail.com</p>
             </div>
 
             <!-- Newsletter Subscription -->
@@ -260,7 +272,7 @@
             <div class="footer-legal">
             <a href="#" class="footer-link">Privacy Policy</a>
             <a href="#" class="footer-link">Terms of Service</a>
-            <p class="copyright">© 2025 SpeedyCourier. All rights reserved.</p>
+            <p class="copyright">© 2025 Courier Management System. All rights reserved.</p>
             </div>
         </div>
     </footer>
